@@ -7,11 +7,12 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  cursor: default;
 }
 
 @media screen and (max-width: 767px) {
   .popup__container {
-    max-width: calc(100% - (19px * 2));
+    max-width: calc(100% - (40px * 2));
     width: 100%;
   }
-}
+}  

@@ -12,6 +12,5 @@
   }
   
   .place__button-like:hover {
-    background-image: url('../../../images/Like-active-button.svg');
     transform: scale(1.3);
   } 

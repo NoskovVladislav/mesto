@@ -3,5 +3,8 @@
   justify-content: space-between;
   align-items: center;
   width: calc(100% - (21px * 2));
-  margin: 25px auto 31px;
+  padding-top: 25px;
+  padding-right: 15px;
+  padding-bottom: 31px;
+  padding-left: 21px;
 }

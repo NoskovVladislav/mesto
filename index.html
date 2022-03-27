@@ -33,49 +33,6 @@
         <button class="button profile__button-add" type="button"></button>
       </section>
       <section class="places content__item">
-        <article class="place">
-          <img src="./images/Bolgar.jpeg" alt="Фотография древнего города Болгар. Татарстан" class="place__image">
-          <div class="place__row-block">
-            <h2 class="place__title">Болгар, Татарстан</h2>
-            <button class="button place__button-like" type="button"></button>
-          </div>
-        </article>
-        <article class="place">
-          <img src="./images/Sasyk.jpeg" alt="Фотография озера Сасык-Сиваш, Крым" class="place__image">
-          <div class="place__row-block">
-            <h2 class="place__title">Озеро Сасык-Сиваш, Крым</h2>
-            <button class="button place__button-like" type="button"></button>
-          </div>
-        </article>
-        <article class="place">
-          <img src="./images/Ruskeala.jpeg" alt="Фотография мраморного каньона Рускеала, Карелия" class="place__image">
-          <div class="place__row-block">
-            <h2 class="place__title">Мраморный каньон Рускеала, Карелия</h2>
-            <button class="button place__button-like" type="button"></button>
-          </div>
-        </article>
-        <article class="place">
-          <img src="./images/Gamstul.jpeg" alt="Фотография Гамсутль, Дагестан" class="place__image">
-          <div class="place__row-block">
-            <h2 class="place__title">Гамсутль, Дагестан</h2>
-            <button class="button place__button-like" type="button"></button>
-          </div>
-        </article>
-        <article class="place">
-          <img src="./images/charskie_peski.jpeg" alt="Фотография Чарских песков, Забайкалье" class="place__image">
-          <div class="place__row-block">
-            <h2 class="place__title">Чарские пески, Забайкалье</h2>
-            <button class="button place__button-like" type="button"></button>
-          </div>
-        </article>
-        <article class="place">
-          <img src="./images/ordinskaya.jpeg" alt="Фотография Ординской пещеры, Пермский край" class="place__image">
-          <div class="place__row-block">
-            <h2 class="place__title">Ординская пещера, Пермский край</h2>
-            <button class="button place__button-like" type="button"></button>
-          </div>
-        </article>
-
       </section>
 
     </main>
@@ -84,20 +41,48 @@
       <p class="footer__author">&copy; 2022 Mesto Russia</p>
     </footer>
 
-    <section class="popup">
+    <section class="popup" id="popup-profile">
       <div class="popup__container">
         <button class="button popup__button-close" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" name="popup-form">
+        <form class="popup__form" name="popup-form" id="popup-form-edit">
           <input class="popup__input popup__input_type_author" type="text" placeholder="Имя" name="popup-input-name">
-          <input class="popup__input popup__input_type_status" type="text" placeholder="О себе"
-            name="popup-input-status">
+          <input class="popup__input popup__input_type_status" type="text" placeholder="О себе">
           <button class="button popup__button-submit" type="submit">Сохранить</button>
         </form>
       </div>
     </section>
+    <section class="popup" id="popup-add-card">
+      <div class="popup__container">
+        <button class="button popup__button-close" type="button"></button>
+        <h2 class="popup__title">Новое место</h2>
+        <form class="popup__form" name="popup-form" id="popup-form-add">
+          <input class="popup__input popup__input_type_place-name" type="text" placeholder="Название">
+          <input class="popup__input popup__input_type_photo" type="url" placeholder="Ссылка на картинку">
+          <button class="button popup__button-submit" type="submit">Создать</button>
+        </form>
+      </div>
+    </section>
+    <section class="popup popup__blackout" id="popup-image">
+      <figure class="popup__figure">
+        <button class="button popup__button-close" type="button"></button>
+        <img class="popup__image" alt="Картинка" src="#">
+        <figcaption class="popup__caption"></figcaption>
+      </figure>
+    </section>
 
   </div>
+
+  <template class="places-template">
+    <article class="place">
+      <img class="place__image" alt="Картинка" src="#">
+      <button class="button place__button-remove" type="button"></button>
+      <div class="place__row-block">
+        <h2 class="place__title"></h2>
+        <button class="button place__button-like" type="button"></button>
+      </div>
+    </article>
+  </template>
 
   <script src="./scripts/index.js"></script>
 </body>
