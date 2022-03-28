@@ -1,31 +1,3 @@
-// массив 6 карточек 
-const initialCards = [
-  {
-    name: 'Ординская пещера, Пермский край',
-    link: 'https://static.tildacdn.com/tild3931-6539-4230-b733-383936376339/03_ordinskaya_pesher.jpg'
-  },
-  {
-    name: 'Чарские пески, Забайкалье',
-    link: 'https://static.tildacdn.com/tild6237-3434-4061-b334-633431633834/05_charskie_peski.jpg'
-  },
-  {
-    name: 'Гамсутль, Дагестан',
-    link: 'https://static.tildacdn.com/tild6530-6331-4263-b833-653831646134/12_Gamstul.jpg'
-  },
-  {
-    name: 'Мраморный каньон Рускеала, Карелия',
-    link: 'https://static.tildacdn.com/tild6136-6366-4262-a531-393631633931/13_Ruskeala.jpg'
-  },
-  {
-    name: 'Розовое озеро Сасык-Сиваш, Крым',
-    link: 'https://static.tildacdn.com/tild6535-3937-4331-b732-336136616164/11_Sasyk-sivash.jpg'
-  },
-  {
-    name: 'Болгар. Татарстан',
-    link: 'https://static.tildacdn.com/tild3963-6363-4330-b031-393239356436/18_Bolgar.jpg'
-  }
-];
-
 // Выбираем элементы Popup's
 const popups = document.querySelectorAll('.popup');
 const popupProfile = document.querySelector('#popup-profile');
@@ -52,12 +24,6 @@ const placesList = document.querySelector('.places');
 
 // Функуция открытия Popup
 function showPopup(popup) {
-  document.addEventListener('keydown', evt => {
-    if (evt.key === 'Escape') {
-      closePopup(popup);
-    }
-  });
-
   popup.classList.add('popup__opened');
   popup.removeEventListener('click', showPopup);
 };
@@ -80,11 +46,13 @@ function createCard(name, link) {
   // Подставляем пришедшие значения в шаблон новой карточки
   elementTitle.textContent = name;
   elementImage.src = link;
-  elementImage.alt = 'Фотография местности ' + name;
+  elementImage.alt = name;
+
 
   const placeButtonRemove = element.querySelector(".place__button-remove");
   const placeButtonLike = element.querySelector(".place__button-like");
   const placeImage = element.querySelector(".place__image");
+
 
   // Отслеживаем событие клика кнопки Удаление
   placeButtonRemove.addEventListener("click", evt => {
@@ -96,10 +64,12 @@ function createCard(name, link) {
     evt.target.classList.toggle("place__button-like_active");
   });
 
+
   // Отслеживаем событие клика на картинку
   placeImage.addEventListener('click', evt => {
     document.querySelector('.popup__image').src = evt.target.src;
     document.querySelector('.popup__caption').textContent = name;
+    document.querySelector('.popup__image').alt = evt.target.alt;
 
     showPopup(popupImage);
   });
