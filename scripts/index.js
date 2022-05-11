@@ -3,6 +3,8 @@ const popups = document.querySelectorAll('.popup');
 const popupProfile = document.querySelector('#popup-profile');
 const popupAddCard = document.querySelector('#popup-add-card');
 const popupImage = document.querySelector('#popup-image');
+const popupElemImg = popupImage.querySelector('.popup__image');
+const popupElemCaptain = popupImage.querySelector('.popup__caption');
 
 // Выбираем формы по id 
 const popupFormAdd = document.querySelector('#popup-form-add');
@@ -10,8 +12,6 @@ const popupFormEdit = document.querySelector('#popup-form-edit');
 // Выбираем елементы форм
 const popupNameField = document.querySelector('.popup__input_type_author');
 const popupStatusField = document.querySelector('.popup__input_type_status');
-const popupNamePlaceField = document.querySelector('.popup__input_type_place-name');
-const popupPlacePhoto = document.querySelector('.popup__input_type_photo');
 
 // Выбираем элементы блока Profile
 const profileTitle = document.querySelector('.profile__author');
@@ -20,12 +20,17 @@ const profileEditButton = document.querySelector('.profile__button-edit');
 const profileAddButton = document.querySelector('.profile__button-add');
 
 // Выбираем блок Places
+const placestemplate = document.querySelector(".places-template");
 const placesList = document.querySelector('.places');
+
+// 
+const newLinkCard = popupFormAdd.querySelector('.popup__input_type_photo');
+const newNameCard = popupFormAdd.querySelector('.popup__input_type_place-name');
 
 // Функция нажатия на ESC
 function pressingEscape(evt) {
-  const popupIsOpen = document.querySelector('.popup__opened')
   if (evt.key === 'Escape') {
+    const popupIsOpen = document.querySelector('.popup__opened')
     closePopup(popupIsOpen);
   }
 }
@@ -34,7 +39,6 @@ function pressingEscape(evt) {
 function showPopup(popup) {
   document.addEventListener('keydown', pressingEscape);
   popup.classList.add('popup__opened');
-  popup.removeEventListener('click', showPopup);
 };
 
 // Функция закрытия Popup
@@ -45,9 +49,7 @@ function closePopup(popup) {
 
 //Функция создания карточки 
 function createCard(name, link) {
-  // Находим элемент в DOM и клонируем контент в теге
-  const element = document.querySelector(".places-template").content.cloneNode(true);
-
+  const element = placestemplate.content.cloneNode(true);
   // находим элементы в DOM
   const elementTitle = element.querySelector(".place__title");
   const elementImage = element.querySelector(".place__image");
@@ -71,14 +73,11 @@ function createCard(name, link) {
 
   // Отслеживаем событие клика на картинку
   elementImage.addEventListener('click', evt => {
-    const popupElemImg = popupImage.querySelector('.popup__image');
-    const popupElemCaptain = popupImage.querySelector('.popup__caption');
-    document.querySelector('.popup__image').alt = evt.target.alt;
+    popupElemImg.alt = evt.target.alt;
     popupElemImg.src = evt.target.src;
     popupElemCaptain.textContent = name;
     showPopup(popupImage);
   });
-
   return element; //возвращается созданная карточка 
 }
 
@@ -104,12 +103,9 @@ popups.forEach(popup => {
 // Отслеживаем событие отправки формы "Новой карточки"
 popupFormAdd.addEventListener("submit", evt => {
   evt.preventDefault()
-  const newNameCard = popupFormAdd.querySelector('.popup__input_type_place-name').value; // Значения полей формы 
-  const newLinkCard = popupFormAdd.querySelector('.popup__input_type_photo').value;
-  addCard(placesList, createCard(newNameCard, newLinkCard)); // Добавляем новую карточку
+  addCard(placesList, createCard(newNameCard.value, newLinkCard.value)); // Добавляем новую карточку
   closePopup(popupAddCard); // закрываем форму
   popupFormAdd.reset(); // сбрасываем значения формы
-
 });
 
 // Отслеживаем событие отправки формы "Редактирования Profile" и отправляем полученые значения 
