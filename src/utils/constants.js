@@ -52,3 +52,4 @@ export const profileEditButton = document.querySelector('.profile__button-edit')
 export const profileAddButton = document.querySelector('.profile__button-add');
 // Выбираем контейнер для карточек
 export const placesListContainer = document.querySelector('.places');
+

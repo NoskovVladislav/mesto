@@ -1,6 +1,7 @@
 export default class Popup {
   constructor(container) {
     this._container = container;
+
   }
 
   // Метод открытия попапа
