@@ -13,7 +13,7 @@
   .popup__title_question{
     max-width: calc(100% - 40px);
     font-size: 18px;
-    Line-height:21.78px;
+    line-height:21.78px;
     margin-bottom: 0px;
   }
 }
