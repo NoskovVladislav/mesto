@@ -5,6 +5,12 @@
   object-fit: cover;
 }
 
+.profile__avatar:hover {
+  cursor: pointer;
+  outline-style: none;
+  opacity: .2;
+}
+
 @media screen and (max-width: 915px) {
   .profile__avatar {
     margin: 0 0 14px 0;

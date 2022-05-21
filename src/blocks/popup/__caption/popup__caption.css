@@ -4,9 +4,3 @@
   font-size: 12px;
   line-height: 15px;
 }
-
-@media screen and (max-width: 720px) {
-  .popup__caption {
-    width: 282px;
-  }
-}

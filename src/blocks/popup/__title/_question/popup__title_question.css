@@ -1,0 +1,19 @@
+.popup__title_question{
+    margin-top: -3px;
+    margin-bottom: -3px;
+}
+@media screen and (max-width: 767px) {
+  .popup__title_question {
+    font-size: 18px;
+    margin: 0px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .popup__title_question{
+    max-width: calc(100% - 40px);
+    font-size: 18px;
+    Line-height:21.78px;
+    margin-bottom: 0px;
+  }
+}

@@ -1,18 +1,17 @@
 export default class Popup {
-  constructor(container) {
-    this._container = container;
-
+  constructor(containerSelector) {
+    this._container = document.querySelector(`${containerSelector}`);
   }
 
   // Метод открытия попапа
   open() {
-    this._container.classList.add('popup__opened');
+    this._container.classList.add('popup_opened');
     document.addEventListener('keydown', this._handleEscClose);
   }
 
   // Метод закрытия попапа
   close() {
-    this._container.classList.remove('popup__opened');
+    this._container.classList.remove('popup_opened');
     document.removeEventListener('keydown', this._handleEscClose);
   }
 

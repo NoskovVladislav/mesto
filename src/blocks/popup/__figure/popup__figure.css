@@ -6,9 +6,8 @@
   cursor: default;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .popup__figure {
     max-width: calc(100% - (40px * 2));
-    width: 282px;
   }
-}
+}  
