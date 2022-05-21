@@ -1,9 +1,9 @@
-.popup__title_avatar{
+.popup__title_wrap-avatar{
     margin-top: 9px;
     margin-bottom: 9px;
 }
 @media screen and (max-width: 767px) {
-  .popup__title_avatar {
+  .popup__title_wrap-avatar{
     font-size: 18px;
     Line-height:21.78px;
     margin: 0px;
@@ -11,7 +11,7 @@
 }
 
 @media screen and (max-width: 320px) {
-  .popup__title_avatar{
+  .popup__title_wrap-avatar{
     font-size: 18px;
     Line-height:21.78px;
     margin: 0px;
