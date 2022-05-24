@@ -31,11 +31,19 @@ import {
 const userId = {};
 
 // Экземпляр класса API 
+<<<<<<< Updated upstream
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1',
   token: 'd90f8da0-42f7-42bd-953f-3dee88985cfc',
   groupId: 'cohort-41'
 });
+=======
+//const api = new Api({
+//  baseUrl: 'https://mesto.nomoreparties.co/v1',
+//  token: '96eScBoG1MCkXSTAIKIfYXL2ymBZP2Ce',
+//  groupId: 'cohort-41'
+//});
+>>>>>>> Stashed changes
 
 // Экземпляр формы с картинкой и тектом
 const popupImage = new PopupWithImage(popupImageId);
@@ -134,6 +142,7 @@ function removeCard(card) {
     .catch(err => console.log(`Error: ${err}`))
     .finally(popupRemoveCard.close())
 }
+<<<<<<< Updated upstream
 
 // Функция отправляет инфу о поставленном лайке и активирует его на странице
 function addLike(card) {
@@ -144,6 +153,18 @@ function addLike(card) {
     .catch(err => console.log(`Error: ${err}`))
 }
 
+=======
+
+// Функция отправляет инфу о поставленном лайке и активирует его на странице
+function addLike(card) {
+  api.addLike(card.getId())
+    .then((res) => {
+      card.like(res.likes.length)
+    })
+    .catch(err => console.log(`Error: ${err}`))
+}
+
+>>>>>>> Stashed changes
 // Функция отправляет инфу о убранном лайке и деактивирует его на странице
 function removeLike(card) {
   api.removeLike(card.getId())
