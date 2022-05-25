@@ -8,12 +8,7 @@
   .profile__overlay {
     margin: 0 0 14px 0;
   }
-<<<<<<< Updated upstream
 }
-=======
-} 
-
->>>>>>> Stashed changes
 .profile__overlay:hover {
   background-image: url('../../../images/EditAvatar.png');
   background-position: center;

@@ -18,14 +18,14 @@ export default class Popup {
   // Метод содержащий функционал нажатия на ESC 
   _handleEscClose = (evt) => {
     if (evt.key === 'Escape') {
-      this.close(this._container);
+      this.close();
     }
   }
 
   // Метод клика по зонам контейнера
   _handleClickContainer = (evt) => {
     if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__button-close')) {
-      this.close(this._container);
+      this.close();
     }
   }
 

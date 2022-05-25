@@ -4,13 +4,8 @@ export default class PopupWithForm extends Popup {
   constructor({ submitForm }, containerSelector) {
     super(containerSelector);
     this._submitForm = submitForm;
-<<<<<<< Updated upstream
     this._formContainer = this._container.querySelector('.popup__form');
     this._inputList = this._formContainer.querySelectorAll('.popup__input');
-=======
-    this._formSelector = this._container.querySelector('.popup__form');
-    this._inputList = this._formSelector.querySelectorAll('.popup__input');
->>>>>>> Stashed changes
     this._formButton = this._container.querySelector('.popup__button-submit');
   }
 
@@ -32,13 +27,13 @@ export default class PopupWithForm extends Popup {
   setEventListeners() {
     super.setEventListeners();
     this._formContainer.addEventListener('submit', this._handleSubmitForm);
+    this.close();
   }
 
   // метод описывает функционал события отправки формы
   _handleSubmitForm = (evt) => {
     evt.preventDefault();
     this._submitForm(this._getInputValues());
-    this.close(this._container);
   }
 
   renderLoading(isLoading) {

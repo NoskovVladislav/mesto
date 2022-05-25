@@ -31,19 +31,11 @@ import {
 const userId = {};
 
 // Экземпляр класса API 
-<<<<<<< Updated upstream
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1',
   token: 'd90f8da0-42f7-42bd-953f-3dee88985cfc',
   groupId: 'cohort-41'
 });
-=======
-//const api = new Api({
-//  baseUrl: 'https://mesto.nomoreparties.co/v1',
-//  token: '96eScBoG1MCkXSTAIKIfYXL2ymBZP2Ce',
-//  groupId: 'cohort-41'
-//});
->>>>>>> Stashed changes
 
 // Экземпляр формы с картинкой и тектом
 const popupImage = new PopupWithImage(popupImageId);
@@ -73,9 +65,12 @@ const formAddCard = new PopupWithForm({
       .then((res) => {
         const cardElement = creatureCard(res).generateCard();
         cardsList.setItemUp(cardElement);
+        formAddCard.close();
       })
       .catch(err => console.log(`Error: ${err}`))
-      .finally(formAddCard.renderLoading(false))
+      .finally(() => {
+        formAddCard.renderLoading(false)
+      });
   },
 },
   popupAddCardId
@@ -95,9 +90,12 @@ const formProfile = new PopupWithForm({
     api.editInfoUser(formData)
       .then((res) => {
         userInfo.setUserInfo(res);
+        formProfile.close();
       })
       .catch(err => console.log(`Error: ${err}`))
-      .finally(formProfile.renderLoading(false))
+      .finally(() => {
+        formProfile.renderLoading(false)
+      });
   },
 },
   popupProfileId
@@ -106,32 +104,44 @@ const formProfile = new PopupWithForm({
 // Экземпляр попапа для смены Аватара
 const formProfileAvatar = new PopupWithForm({
   submitForm: (formData) => {
-    formProfile.renderLoading(true)
+    formProfileAvatar.renderLoading(true)
     api.editUserAvatar(formData)
       .then((res) => {
         userInfo.setUserInfo(res);
+        formProfileAvatar.close();
       })
       .catch(err => console.log(`Error: ${err}`))
-      .finally(formProfile.renderLoading(false))
+      .finally(() => {
+        formProfileAvatar.renderLoading(false)
+      });
   },
 },
   popupEditAvatarId
 );
 
-// Прием объекта по Апи с свервера и перебор элементов
-api.getInitialCards()
-  .then(res => {
-    cardsList.renderItems(res)
-  })
-  .catch(err => console.log(`Error: ${err}`));
-
-// Прием информации о пользователе и публикация на странице
+// если я удаляю этот апи, то в промис почему-то не передется id и не добавляется корзина удаления.
+// я понимаю логику, что все нужно прописать в promise.all в .then, но 2 дня бился и ни к чему не пришел, про цепочки прочитал не один раз(то что вы скидывали), но положительный исход у меня не получается)
 api.getInfoUser()
   .then(res => {
     userId.id = res._id
     userInfo.setUserInfo(res)
   })
-  .catch(err => console.log(`Error: ${err}`));
+  .catch((err) => console.log(err))
+
+// в Promise.all передаем массив промиссов, которые нужно выполнить
+Promise.all([
+  api.getInfoUser(),
+  api.getInitialCards()
+])
+  .then((res) => {
+    userInfo.setUserInfo(res[0]);
+    cardsList.renderItems(res[1], [0]._id);
+  })
+  .catch((err) => {
+    console.log(`Error: ${err}`);
+  });
+
+
 
 // Функция удаляет карточку с сервера и страницы, закрывает попап
 function removeCard(card) {
@@ -139,10 +149,11 @@ function removeCard(card) {
     .then((res) => {
       card.deleteCard()
     })
-    .catch(err => console.log(`Error: ${err}`))
-    .finally(popupRemoveCard.close())
+    .catch((err) => console.log(err))
+    .finally(() => {
+      popupRemoveCard.close();
+    });
 }
-<<<<<<< Updated upstream
 
 // Функция отправляет инфу о поставленном лайке и активирует его на странице
 function addLike(card) {
@@ -150,28 +161,16 @@ function addLike(card) {
     .then((res) => {
       card.like(res.likes.length)
     })
-    .catch(err => console.log(`Error: ${err}`))
+    .catch((err) => console.log(err))
 }
 
-=======
-
-// Функция отправляет инфу о поставленном лайке и активирует его на странице
-function addLike(card) {
-  api.addLike(card.getId())
-    .then((res) => {
-      card.like(res.likes.length)
-    })
-    .catch(err => console.log(`Error: ${err}`))
-}
-
->>>>>>> Stashed changes
 // Функция отправляет инфу о убранном лайке и деактивирует его на странице
 function removeLike(card) {
   api.removeLike(card.getId())
     .then((res) => {
       card.like(res.likes.length)
     })
-    .catch(err => console.log(`Error: ${err}`))
+    .catch((err) => console.log(err))
 }
 
 // Функция создающая экземпляр класса Card
