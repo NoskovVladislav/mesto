@@ -12,7 +12,7 @@
 .button{background:transparent 50% no-repeat;cursor:pointer;outline-style:none}.button:hover{opacity:.6}
 .profile{display:flex;align-items:center;width:100%}@media screen and (max-width:915px){.profile{flex-direction:column}}
 .profile__overlay{margin:0 30px 0 0;height:120px;max-width:120px}@media screen and (max-width:915px){.profile__overlay{margin:0 0 14px}}.profile__overlay:hover{background-image:url(images/EditAvatar.46061f616d9db93c1d8f.png);background-position:50%;background-repeat:no-repeat}
-.profile__avatar{margin:0 30px 0 0;border-radius:50%;max-width:120px;-o-object-fit:cover;object-fit:cover}.profile__avatar:hover{cursor:pointer;outline-style:none;opacity:.2}@media screen and (max-width:915px){.profile__avatar{margin:0 0 14px}}
+.profile__avatar{margin:0 30px 0 0;border-radius:50%;height:120px;width:120px;-o-object-fit:cover;object-fit:cover}.profile__avatar:hover{cursor:pointer;outline-style:none;opacity:.2}@media screen and (max-width:915px){.profile__avatar{margin:0 0 14px}}
 .profile__text-block{display:flex;flex-direction:column;width:100%}@media screen and (max-width:915px){.profile__text-block{margin-bottom:28px}}
 .profile__row-block{display:flex;align-items:center}@media screen and (max-width:915px){.profile__row-block{justify-content:center}}
 .profile__author{margin:0 17px 0 0;font-weight:500;font-size:42px;line-height:56px;max-width:500px;overflow:hidden;text-overflow:ellipsis}@media screen and (max-width:915px){.profile__author{text-align:center}}@media screen and (max-width:373px){.profile__author{margin:0 7px 0 0;font-size:27px}}
