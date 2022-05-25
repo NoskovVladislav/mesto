@@ -27,7 +27,6 @@ export default class PopupWithForm extends Popup {
   setEventListeners() {
     super.setEventListeners();
     this._formContainer.addEventListener('submit', this._handleSubmitForm);
-    this.close();
   }
 
   // метод описывает функционал события отправки формы

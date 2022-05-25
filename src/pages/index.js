@@ -119,29 +119,19 @@ const formProfileAvatar = new PopupWithForm({
   popupEditAvatarId
 );
 
-// если я удаляю этот апи, то в промис почему-то не передется id и не добавляется корзина удаления.
-// я понимаю логику, что все нужно прописать в promise.all в .then, но 2 дня бился и ни к чему не пришел, про цепочки прочитал не один раз(то что вы скидывали), но положительный исход у меня не получается)
-api.getInfoUser()
-  .then(res => {
-    userId.id = res._id
-    userInfo.setUserInfo(res)
-  })
-  .catch((err) => console.log(err))
-
 // в Promise.all передаем массив промиссов, которые нужно выполнить
 Promise.all([
   api.getInfoUser(),
   api.getInitialCards()
 ])
   .then((res) => {
+    userId.id = res[0]._id;
     userInfo.setUserInfo(res[0]);
     cardsList.renderItems(res[1], [0]._id);
   })
   .catch((err) => {
     console.log(`Error: ${err}`);
   });
-
-
 
 // Функция удаляет карточку с сервера и страницы, закрывает попап
 function removeCard(card) {
